@@ -1,26 +1,106 @@
 ---
-title: "Dashboard Tour"
-description: "A walkthrough of the main sections of the Unibound dashboard and how to navigate them effectively."
+title: "Dashboard"
+description: "Your central hub for monitoring AI agent performance, tracking lead engagement, and managing escalations."
 ---
 
-A walkthrough of the main sections of the Unibound dashboard and how to navigate them effectively.
+The Dashboard is the first thing you see when you log in. It provides a real-time overview of your AI agents' performance across all channels.
 
-## Agents Panel
+## Time Period Selector
 
-The agents panel is your home base. Here you'll see all your AI agents listed with their status (active/paused), assigned channels, and recent activity. Click any agent to edit its configuration.
+Use the **Period** dropdown in the top-right corner to filter all metrics by time range:
 
-## Leads View
+- **Today** -- activity from the current day
+- **Yesterday** -- previous day only
+- **Last 7 days** -- rolling weekly view
+- **Last 30 days** -- default monthly view (selected by default)
+- **Last year** -- full year overview
 
-The leads view shows all contacts your agents have interacted with. Filter by status (qualified, unqualified, booked), search by name or phone number, and click into any lead to see the full conversation history.
+All stat cards show a **"vs last period"** comparison so you can spot trends at a glance.
 
-## Conversations
+## Performance Metrics
 
-View real-time and historical transcripts of all agent interactions. Each conversation shows the channel used, duration, qualification outcome, and any actions taken (bookings, CRM updates, etc.).
+The top row of stat cards tracks your core outreach numbers:
 
-## Integrations Hub
+| Metric              | What it measures                                                                  |
+| ------------------- | --------------------------------------------------------------------------------- |
+| **Leads**           | Total unique leads your agents interacted with in the selected period             |
+| **Conversations**   | Answered calls, email threads with replies, and active SMS/WhatsApp threads       |
+| **Engaged**         | Leads who responded -- inbound messages or calls with 20+ seconds of conversation |
+| **Meetings Booked** | Unique leads with a meeting scheduled (shows internal + external bookings)        |
 
-Manage all your connected services — calendar providers, CRM platforms, notification channels. Each integration shows its connection status and last sync time.
+## Efficiency Metrics
 
-## Settings
+The second row of cards shows how effectively your agents are performing:
 
-Configure organization-level settings including team members, roles and permissions, and API keys for webhook integrations.
+| Metric              | What it measures                                                                          |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| **Engagement Rate** | Percentage of leads who responded to outreach                                             |
+| **Booking Rate**    | Percentage of leads who booked a meeting                                                  |
+| **Touchpoints**     | Total outbound interactions across all channels (calls, emails, SMS, WhatsApp)            |
+| **Time Saved**      | Estimated time saved by AI automation (hover the info icon for the calculation breakdown) |
+
+<Tip>
+  **Time Saved Calculation:** - Call: 2 min base + call duration - Email: 3 min
+  per response - SMS: 1 min per message - WhatsApp: 1 min per message - +5 min
+  per meeting booked
+</Tip>
+
+## Recent Activity
+
+The **Recent Activity** panel shows your latest conversation threads across all channels. You can:
+
+- **Filter by channel** using the tabs: All, SMS, WhatsApp, Email, Calls
+- **Search** by lead name, contact info, or agent name
+- **Click any row** to view the full [conversation detail](/activity/conversation-details) page
+- **Paginate** through results (10 per page)
+
+Click **"See all"** to go to the full [Conversations](/activity/conversations) page.
+
+## AI Escalations
+
+The **AI Escalations** panel on the right shows conversations where AI has paused and needs your input. Each escalation displays:
+
+- The **channel** icon (call, email, SMS, WhatsApp)
+- The **lead name** and contact
+- The **reason** the AI escalated
+- A **timestamp** of when it occurred
+
+Click any escalation to jump directly to the [conversation](#) (or use the link above). If there are more than 5 pending, click **"View all"** to see the complete list on the [AI Escalations](/activity/escalations) page.
+
+## Sidebar Navigation
+
+The left sidebar organizes the platform into sections:
+
+### Manage
+
+- **[Agents](/agent-setup/agent-profile)** -- Create and configure your AI agents
+- **[Channels](/channels/outreach-sequence)** -- Set up communication channels (calls, SMS, email, WhatsApp)
+- **[Data](/data/data-extraction)** -- Configure data extraction and CRM field mapping
+
+### Activity
+
+- **[Leads](/activity/leads)** -- View all contacts with filtering and search
+- **[Conversations](/activity/conversations)** -- Browse all conversation threads
+- **[AI Escalations](/activity/escalations)** -- Review items requiring human attention (shows badge count)
+
+### Configuration
+
+- **[Phone Numbers](/configuration/phone-numbers)** -- Manage Twilio phone numbers
+- **[Email Accounts](/configuration/email-accounts)** -- Connect email accounts via OAuth
+- **[Integrations](/configuration/integrations)** -- Connect CRM platforms (HubSpot, Salesforce), calendars, and Slack
+- **[Notifications](/configuration/notifications)** -- Configure alert preferences
+
+### Account
+
+Access **User Settings**, **Account** (organization settings), and **Sign Out** from the user menu at the bottom of the sidebar.
+
+## Credits
+
+Your remaining credit balance is displayed both in the sidebar footer and the dashboard header. Click the credits button to manage your plan and top up.
+
+<Warning>
+  If your credits drop below zero, a blocking modal will appear preventing
+  further use until credits are topped up. A warning banner appears when credits
+  fall below 100.
+</Warning>
+
