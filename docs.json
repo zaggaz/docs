@@ -9,6 +9,20 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Application",
+          "icon": "book-open-cover",
+          "href": "https://app.unibound.ai"
+        },
+        {
+          "anchor": "Blog",
+          "icon": "newspaper",
+          "href": "https://mintlify.com/blog"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Guides",
@@ -18,7 +32,7 @@
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "numbers-and-emails"
             ]
           },
           {
@@ -67,25 +81,11 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/UniboundLogolight.svg",
+    "dark": "/images/Unibounddark.png"
   },
   "navbar": {
     "links": [
@@ -116,5 +116,8 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/uniboundagents"
     }
+  },
+  "fonts": {
+    "family": "Plus Jakarta Sans"
   }
 }
