@@ -1,0 +1,59 @@
+---
+title: "Calls"
+description: "Connect your AI agent to phone calls — both inbound and outbound."
+---
+
+Connect your AI agent to phone calls — both inbound and outbound. Each call channel requires a phone number assigned to the agent and an agent selected to handle the conversation.
+
+## Inbound Calls
+
+An inbound call channel lets your AI agent answer incoming phone calls automatically. When a lead calls your number, the agent picks up, greets the caller, qualifies them, and can book meetings or transfer the call.
+
+### Setup
+
+To create an inbound call channel:
+
+- **Label** — Give your channel a descriptive name (e.g. "Inbound Sales", "Customer Support")
+- **Phone Number** — Select a phone number from your configured numbers. Once activated, the phone number is locked to preserve conversation history.
+- **Agent** — Choose which agent will handle incoming calls
+- **Opening Line** — Define what the agent says when answering the call (e.g. "Hello! Thank you for calling. How can I help you today?")
+
+<Warning>
+**Opening line:** Keep your greeting concise — callers expect a response within 2–3 seconds. Long greetings can lead to hang-ups.
+</Warning>
+
+### Call Flow
+
+- Agent answers with the configured opening line
+- Conversation flows naturally based on the agent's configuration and knowledge base
+- Qualification questions are woven into the conversation
+- If qualified, agent offers to book a meeting or transfer the call
+- Post-call actions trigger (CRM logging, notifications, etc.)
+
+### Activation
+
+Once you've configured all required fields, toggle the agent to **Live**. This sets up the inbound call routing so that calls to your number reach the AI agent. You can deactivate at any time.
+
+## Outbound Calls
+
+Outbound calls are initiated through an [Outreach Sequence](/channels/outreach-sequence). You create a webhook-triggered sequence and add a **Call** step to it. When the webhook is triggered with a lead's details, the agent calls the lead automatically.
+
+### How It Works
+
+- Create an [Outreach Sequence](/channels/outreach-sequence) channel
+- Add a **Call** step to the sequence (optionally with a custom opening line)
+- Trigger the sequence via the webhook endpoint with the lead's phone number
+- The agent calls the lead using the phone number assigned to the sequence
+- The conversation follows the same flow as inbound — qualification, booking, CRM logging
+
+<Info>
+**Caller ID:** Outbound calls use the phone number assigned to the outreach sequence as the caller ID. Make sure you've configured a number in the sequence's resources.
+</Info>
+
+### Call Recording
+
+All calls — inbound and outbound — are recorded and transcribed automatically. Recordings and transcripts are available in the conversation history for review and compliance.
+
+<Card title="Need help?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free support call and we'll help you get set up.
+</Card>

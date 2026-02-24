@@ -1,0 +1,50 @@
+---
+title: "Leads Dashboard"
+description: "A complete view of all contacts your AI agents have interacted with."
+---
+
+The leads dashboard gives you a complete view of all contacts your AI agents have interacted with, including their qualification status, engagement level, and conversation history.
+
+## Viewing Leads
+
+Leads are listed in a sortable table with columns for name, contact info, company, status, booking status, and last activity date. Click any lead to see their full detail page.
+
+Each lead shows an **Engaged** badge if they have replied to at least one message across any channel. The dashboard header displays overall engagement stats — total leads, number engaged, and engagement rate percentage.
+
+## Filtering & Search
+
+- Search by name, phone number, email, or company name
+- Filter by status: New, Contacted, Qualified, Booked, Converted, Unresponsive, Opted Out, Do Not Contact
+- Filter by engagement: All, Engaged, or Not Engaged
+- Sort by name, company, or last activity date (ascending or descending)
+
+## Lead Detail Page
+
+Clicking a lead opens their detail page, which has two main areas: a **contact info panel** on the right (name, phone, email, company, status, opt-out controls) and an **activity timeline** as the main content.
+
+### Activity Timeline
+
+The activity timeline shows a chronological feed of every interaction for that lead across all channels and agents. Events are grouped and displayed in reverse chronological order. Each entry links to the relevant conversation detail page.
+
+Activity types include:
+
+- **Calls** — With status (completed, no-answer, voicemail, failed), duration, and recording link. Click to view the full [call transcript](/activity/conversation-details).
+- **SMS threads** — Shows message count and latest preview. Click to view the full [SMS conversation](/activity/conversation-details).
+- **WhatsApp threads** — Same as SMS, with message count and preview.
+- **Email threads** — Shows subject line, message count, and the latest email. Click to view the full [email thread](/activity/conversation-details).
+- **Follow-ups** — Scheduled or pending follow-up messages across channels, with scheduled time and attempt number.
+- **Meetings booked** — Shows booking date/time and source (from conversation or external via webhook).
+- **Escalations** — When the AI flagged a situation requiring human attention. See [AI Escalations](/activity/escalations).
+
+### Opt-Out Management
+
+From the lead detail page, you can manually toggle a lead's opt-out status. When a lead opts out (either manually by you or automatically via a keyword like "STOP"), all active follow-up sequences for that lead are cancelled. The opt-out channel is recorded (SMS, WhatsApp, email, or manual).
+
+## Booking Status
+
+Each lead shows whether a meeting has been booked. Bookings can come from two sources:
+
+- **Conversation** — The AI agent booked a meeting during a call or message exchange.
+- **External** — A booking was recorded via webhook (e.g., from an external scheduling tool).
+
+If both sources have bookings, the most recent one takes priority.

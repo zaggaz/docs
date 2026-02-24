@@ -1,0 +1,72 @@
+---
+title: "Testing Webhooks"
+description: "Use the built-in demo tool to test your webhook integration end-to-end before going live."
+---
+
+Before connecting your live lead sources, use the built-in demo tool at [unibound.ai/demo](https://unibound.ai/demo) to test your webhook integration end-to-end.
+
+## Using the Demo Tool
+
+The demo page at [**unibound.ai/demo**](https://unibound.ai/demo) lets you send test webhook payloads to any channel and see the resulting sequence in real-time.
+
+<Steps>
+  <Step title="Get your webhook URL">
+    Copy the webhook URL from your channel's setup page (under **Test & Launch**). You can also open the demo directly from the channel setup — the URL will be pre-filled.
+  </Step>
+  <Step title="Fill in lead details">
+    Enter a name, email, and optionally a phone number and context. Add any custom properties you've defined in your sequence templates.
+  </Step>
+  <Step title="Send the test">
+    Click **Send**. The demo tool will fire the webhook and display the response — including the full scheduled sequence with channels, times, and delays.
+  </Step>
+  <Step title="Watch the sequence">
+    The right panel shows the scheduled sequence items — which channels will fire, the delay between each step, and the status. Your agent will execute the sequence in real-time, and you can monitor it from the [Conversations](/activity/conversations) page.
+  </Step>
+</Steps>
+
+## Test Mode
+
+When testing from the channel setup page, the webhook is sent with a `test=true` parameter. In test mode:
+
+- Only the first step of the sequence runs (no retries or follow-ups)
+- Conversations are marked with a "Test" badge in the dashboard
+- Test calls and messages are excluded from lead analytics
+
+<Info>
+**Test authentication:** Test calls from the channel setup page require an active session for security. The demo tool at unibound.ai/demo does not require authentication — it uses the webhook token directly.
+</Info>
+
+## Testing Inbound Channels
+
+For inbound channels (calls, SMS, email), testing is simpler — no webhook is needed:
+
+- **Inbound calls** — Activate the agent and call the configured phone number directly
+- **Inbound SMS** — Send a text to the configured phone number
+- **Inbound email** — Set a test email filter on the channel setup page so the agent only responds to your test email address, then send an email to the connected account
+
+## cURL Example
+
+```bash title="Trigger a test sequence via cURL"
+curl -X POST "YOUR_WEBHOOK_URL" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Test User",
+    "email": "test@example.com",
+    "number": "+14155551234",
+    "context": "Testing from cURL"
+  }'
+```
+
+## Debugging Failed Webhooks
+
+If your webhook isn't working:
+
+- Check the webhook URL is correct and includes both `agent_id` and `token` parameters
+- Ensure the `Content-Type` header is set to `application/json`
+- Verify `name` and `email` are present in the body
+- If the sequence includes calls or SMS, ensure `number` is in E.164 format
+- Check the response body for specific error messages
+
+<Card title="Need help?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free support call and we'll help you get set up.
+</Card>

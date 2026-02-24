@@ -1,0 +1,63 @@
+---
+title: "Review Prompt"
+description: "Fine-tune the exact prompt sent to your AI agent for full control over its behavior."
+---
+
+The Review Prompt step gives you full control over the exact prompt sent to your AI agent. This is for power users who want to fine-tune exactly how the agent behaves, responds, and structures conversations.
+
+## How It Works
+
+When you create an agent, Unibound automatically generates a prompt based on your configuration — your [agent profile](/agent-setup/agent-profile), [knowledge base](/agent-setup/knowledge-base), [qualification questions](/agent-setup/qualification), and [booking](/agent-setup/booking) settings. The Review Prompt step lets you see and edit this generated prompt directly.
+
+## Variables
+
+The prompt uses variables that are replaced with actual values at runtime. You can insert these anywhere in the prompt:
+
+- `{name}` — The agent's display name
+- `{role}` — The agent's role/title
+- `{companyName}` — Your company name
+- `{tone}` — The conversation tone
+- `{objective}` — The agent's main objective
+- `{knowledgeBase}` — The full knowledge base content
+- `{qualificationQuestions}` — Questions and branching logic
+
+## Editing the Prompt
+
+The editor shows your prompt alongside a live preview with variables replaced by their actual values. Invalid variables are highlighted in red so you can catch typos.
+
+You can restructure sections, change the conversation flow, add custom instructions, or completely rewrite the prompt. The agent will follow whatever instructions are in the prompt.
+
+```text title="Example prompt structure"
+# Context
+You are {name}, a {role}, working for {companyName}.
+
+# Communication Style
+- Maintain a {tone} tone throughout
+- Keep responses short and concise
+- Always ask 1 question at a time
+
+# Your Objective
+{objective}
+
+# Qualification Questions
+{qualificationQuestions}
+
+# Knowledge Base
+{knowledgeBase}
+```
+
+<Warning>
+**Configuration changes:** If you modify settings in other steps (e.g., add a qualification question or change the agent name), your custom prompt won't automatically update. You'll see a warning and can choose to reset to the new default or keep your custom version.
+</Warning>
+
+## Resetting to Default
+
+You can reset the prompt to the auto-generated default at any time. This will incorporate all your latest configuration changes. Note that resetting discards any custom edits.
+
+## Best Practices
+
+- Start with the default prompt and make incremental changes
+- Use the preview pane to verify your prompt reads correctly with real values
+- Keep a backup of your custom prompt before resetting
+- Test changes in the built-in simulator before going live
+- Use variables instead of hardcoding values so changes propagate automatically

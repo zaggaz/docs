@@ -1,0 +1,40 @@
+---
+title: "Qualification Questions"
+description: "Define the questions your agent asks during conversations to qualify leads."
+---
+
+Define the questions your agent asks during conversations to qualify leads. Questions are asked in sequence, and you can set up branching rules to create different paths based on the lead's answers.
+
+## Adding Questions
+
+Add questions one at a time. Each question is a free-text prompt that the agent will ask during the conversation — for example, "What's your current sales process?" or "How many people are on your team?" There are no predefined question types; just write the question exactly as you want the agent to ask it.
+
+Questions are asked in the order you define them. You can drag and drop to reorder them at any time.
+
+## Branching Logic
+
+Each question can have branching rules that change which question comes next based on the lead's answer. Branching uses AI to interpret the answer and match it against conditions you define in natural language.
+
+For each question, you can configure:
+
+- **Conditional branches** — Define conditions like "if they mention a budget over $10k" or "if they say yes or seem interested", and specify which question to jump to when matched.
+- **Default path** — The fallback if no branch conditions match. This typically goes to the next question in the sequence.
+
+<Tip>
+**AI-powered branching:** Branch conditions are evaluated by AI, so you can write them in natural language. Instead of exact string matching, the AI interprets the lead's answer and determines which branch to follow. For example, "if they're not ready yet" will match a variety of hesitant responses.
+</Tip>
+
+## Branch Destinations
+
+Each branch can go to one of these destinations:
+
+- **Next Question** — Continue to the next question in sequence
+- **Specific Question** — Jump to any later question by number
+- **End of Questions** — Skip remaining questions and move on
+
+## Best Practices
+
+- Keep questions conversational — write them how you'd naturally ask
+- Use branching to skip irrelevant questions and keep conversations focused
+- Write branch conditions in clear, natural language for better AI interpretation
+- Test your question flow in the built-in simulator before going live

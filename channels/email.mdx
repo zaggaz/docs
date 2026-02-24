@@ -1,0 +1,37 @@
+---
+title: "Email"
+description: "Connect a Gmail account to enable AI-powered email conversations."
+---
+
+Connect a Gmail account to enable AI-powered email conversations. Your agent can receive and respond to incoming emails, with the same intelligence as voice and messaging channels.
+
+## Setup
+
+To create an email channel:
+
+- **Label** — A descriptive name (e.g. "Inbound Sales Email Agent")
+- **Email Account** — Connect a Gmail account via OAuth. Click "Connect Gmail" and authorize Unibound to send and receive emails on your behalf. Once activated, the email account is locked to preserve conversation history.
+- **Agent** — Choose which agent will handle incoming emails
+
+<Info>
+**Email providers:** Gmail is fully supported. Outlook support is coming soon.
+</Info>
+
+## Response Criteria
+
+Control which emails your agent responds to:
+
+- **Replies Only Mode** — When enabled, the agent only responds to emails that are replies to conversations you initiated (useful for outbound sequences)
+- **Response Criteria** — Describe which emails the agent should respond to (e.g. "Only respond to product inquiries, pricing, or demo requests. Ignore newsletters and automated notifications."). Leave empty to respond to all business-related emails.
+
+## Email Threads
+
+Your agent maintains context across entire email threads. It reads the full conversation history before composing a reply, ensuring coherent and contextually relevant responses.
+
+## Auto Follow-Up
+
+Enable automatic email follow-ups if the lead doesn't respond. Configure a sequence of delays (in hours or days) — the agent sends follow-up emails at each interval. Follow-ups are sent on the same thread.
+
+## Outbound Email
+
+For outbound email campaigns, use an [Outreach Sequence](/channels/outreach-sequence) with Email steps. You can write manual templates with variables, let the AI generate the body, and chain multiple emails as replies on the same thread.

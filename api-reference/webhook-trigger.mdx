@@ -1,0 +1,102 @@
+---
+title: "Webhook Trigger"
+description: "Start an outreach sequence from any external system by sending a POST request to your channel's webhook URL."
+---
+
+The webhook trigger is how you start an [outreach sequence](/channels/outreach-sequence) from any external system. When a lead is captured — from a form, ad platform, CRM, or automation tool — you send a POST request to your channel's webhook URL to kick off the sequence.
+
+## Getting Your Webhook URL
+
+Each outreach channel has its own unique webhook URL. You'll find it on the channel's setup page under the **Test & Launch** step. The URL includes the agent ID and a secure token:
+
+```text title="Webhook URL format"
+https://your-instance.supabase.co/functions/v1/webhook-trigger?agent_id=<agent_id>&token=<webhook_token>
+```
+
+<Info>
+**Unique per channel:** Each channel has its own webhook URL and token. You can regenerate the token at any time from the channel setup page — this will invalidate the previous URL.
+</Info>
+
+## POST Body
+
+Send a JSON payload with the lead's details. The only required fields are `name` and `email`.
+
+```json title="Request body"
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "number": "+14155551234",
+  "context": "Submitted enquiry on pricing page",
+  "customProperties": {
+    "firstName": "Jane",
+    "company": "Acme Corp",
+    "plan": "Enterprise"
+  }
+}
+```
+
+### Field Reference
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Lead's full name |
+| `email` | string | Yes | Lead's email address |
+| `number` | string | No | Phone number in E.164 format (e.g., +14155551234). Required if the sequence includes calls or SMS. |
+| `context` | string | No | Additional context passed to the AI agent. The agent uses this to personalise conversations. |
+| `customProperties` | object | No | Key-value pairs used as template variables in sequence copy (see [Variables](/channels/outreach-sequence#template-variables)). |
+
+## Response
+
+On success, the API returns the scheduled sequence items — showing which channels will fire and when:
+
+```json title="Success response (200)"
+{
+  "success": true,
+  "scheduled": [
+    {
+      "channel": "call",
+      "scheduled_at": "2025-01-15T14:00:00Z",
+      "delay_minutes": 0,
+      "attempt_number": 1,
+      "status": "scheduled"
+    },
+    {
+      "channel": "sms",
+      "scheduled_at": "2025-01-15T14:05:00Z",
+      "delay_minutes": 5,
+      "attempt_number": 2,
+      "status": "scheduled"
+    },
+    {
+      "channel": "email",
+      "scheduled_at": "2025-01-16T14:00:00Z",
+      "delay_minutes": 1440,
+      "attempt_number": 3,
+      "status": "scheduled"
+    }
+  ]
+}
+```
+
+## Error Codes
+
+| Code | Description |
+|---|---|
+| 400 | Invalid request body — missing required fields or invalid phone format |
+| 401 | Invalid or missing webhook token |
+| 404 | Agent not found |
+| 409 | Lead already has an active sequence on this channel |
+
+## Common Integration Sources
+
+The webhook works with any system that can send HTTP POST requests:
+
+- **Website forms** — HubSpot, Salesforce, Webflow, Typeform, etc.
+- **Lead ads** — Facebook, LinkedIn, TikTok lead gen forms
+- **Zapier** — Connect 5,000+ apps to trigger sequences
+- **n8n** — Include in your automation workflows
+- **Custom code** — Any backend that can make HTTP requests
+
+<Card title="Need help?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free support call and we'll help you get set up.
+</Card>

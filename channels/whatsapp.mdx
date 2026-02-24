@@ -1,0 +1,42 @@
+---
+title: "WhatsApp"
+description: "Connect your WhatsApp Business account to let your AI agent handle conversations on WhatsApp."
+---
+
+Connect your WhatsApp Business account to let your AI agent handle conversations on WhatsApp. Leads message your number and receive intelligent, context-aware replies.
+
+## Setup
+
+To create a WhatsApp channel:
+
+- **Label** — A descriptive name (e.g. "Inbound WhatsApp Agent")
+- **Phone Number** — Select a Twilio number with SMS/WhatsApp capability. Numbers already used by another WhatsApp agent are disabled. Once activated, the number is locked to preserve conversation history.
+- **Agent** — Choose which agent will handle WhatsApp messages
+
+<Info>
+**WhatsApp Business API:** Unibound uses the Twilio WhatsApp integration. Your phone number must have WhatsApp capability enabled in Twilio. Manual webhook configuration may be required — instructions are shown after saving.
+</Info>
+
+## Conversation Flow
+
+WhatsApp conversations follow the same logic as other channels. Your agent uses its knowledge base, qualification questions, and configuration to compose replies. The agent reads the full conversation history before responding.
+
+## 24-Hour Conversation Window
+
+WhatsApp enforces a 24-hour messaging window. After the window expires (24 hours since the customer's last message), your agent must use an approved template to re-initiate contact. Unibound tracks these windows automatically.
+
+## Auto Follow-Up
+
+Enable automatic follow-ups within the 24-hour window. Follow-up delays are tracked cumulatively — if the total delay exceeds 24 hours, the follow-up is automatically marked as expired.
+
+## Outbound WhatsApp
+
+For outbound WhatsApp messages, use an [Outreach Sequence](/channels/outreach-sequence) with a WhatsApp step. Outbound WhatsApp messages require pre-approved templates from Twilio's Content API. Select a template and map variables to your lead's data.
+
+## Webhook Configuration
+
+After saving, Unibound attempts to configure the Twilio WhatsApp webhook automatically. If manual configuration is needed (common for WhatsApp), you'll see the webhook URL and step-by-step instructions to set it up in Twilio.
+
+<Card title="Need help connecting WhatsApp?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free call and we'll walk you through the Twilio WhatsApp setup.
+</Card>

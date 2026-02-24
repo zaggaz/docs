@@ -1,13 +1,17 @@
 {
   "$schema": "https://mintlify.com/docs.json",
+  "name": "Unibound",
   "theme": "mint",
-  "name": "Unibound Docs",
   "colors": {
-    "primary": "#58079F",
-    "light": "#31ED44",
-    "dark": "#111111"
+    "primary": "#6D0FAB",
+    "light": "#9B30FF",
+    "dark": "#6D0FAB"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
+  "topbarCtaButton": {
+    "name": "Book a Support Call",
+    "url": "https://meetings.hubspot.com/james2781/support-call"
+  },
   "navigation": {
     "global": {
       "anchors": [
@@ -28,55 +32,65 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
-              "index",
-              "quickstart",
-              "numbers-and-emails"
+              "getting-started/overview",
+              "getting-started/quick-start",
+              "getting-started/dashboard-tour"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Agent Setup",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "agent-setup/agent-profile",
+              "agent-setup/knowledge-base",
+              "agent-setup/qualification",
+              "agent-setup/booking",
+              "agent-setup/review-prompt"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Channels",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "channels/calls",
+              "channels/sms",
+              "channels/whatsapp",
+              "channels/email",
+              "channels/outreach-sequence"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Configuration",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+              "configuration/phone-numbers",
+              "configuration/email-accounts",
+              "configuration/integrations",
+              "configuration/notifications"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Data",
+            "pages": ["data/data-extraction"]
+          },
+          {
+            "group": "Activity",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "activity/leads",
+              "activity/conversations",
+              "activity/conversation-details",
+              "activity/escalations"
+            ]
+          },
+          {
+            "group": "Admin",
+            "pages": ["admin/roles"]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api-reference/webhook-trigger",
+              "api-reference/webhook-events",
+              "api-reference/testing-webhooks"
             ]
           }
         ]
@@ -91,26 +105,14 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:james@unibound.ai"
+        "href": "mailto:support@unibound.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "App",
-      "href": "https://leo.unibound.ai"
+      "href": "https://app.unibound.ai"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {

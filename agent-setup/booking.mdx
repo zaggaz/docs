@@ -1,0 +1,36 @@
+---
+title: "Booking"
+description: "Enable your agent to book meetings directly into your calendar after qualifying a lead."
+---
+
+Enable your agent to book meetings directly into your calendar after qualifying a lead. Unibound integrates with two calendar providers: Google Calendar and HubSpot.
+
+## Enabling Booking
+
+Toggle booking on in the agent setup flow. Once enabled, your agent will offer to schedule a meeting when appropriate during the conversation — typically after qualification questions are complete.
+
+## Google Calendar
+
+Connect your Google account and select which calendar to use for booking. Configure:
+
+- **Calendar** — Choose which Google Calendar to book into
+- **Meeting duration** — 15, 30, 45, or 60 minutes
+- **Meeting title** — Customize the event title (use `{{name}}` to insert the lead's name)
+- **Timezone** — The timezone for scheduling
+- **Minimum lead time** — Set the minimum time into the future a meeting can be booked (in hours or days). This prevents the agent from booking meetings too soon — for example, setting 24 hours ensures the agent won't book a meeting for later today.
+
+<Tip>
+**Lead time:** Use minimum lead time to give yourself buffer before meetings. If you need time to prepare or review the lead before the call, set a lead time of 1-2 days.
+</Tip>
+
+## HubSpot Calendar
+
+If you use HubSpot's meeting scheduler, connect your HubSpot account and select a meeting link. Meeting durations are pulled from your HubSpot configuration.
+
+- **Calendar** — Select from your HubSpot meeting links
+- **Meeting duration** — Determined by the selected HubSpot calendar
+- **Timezone** — The timezone for scheduling
+
+## How It Works
+
+When booking is enabled, the agent checks real-time availability on the connected calendar and offers available time slots to the lead. Once a slot is confirmed, the meeting is created automatically with all relevant details.

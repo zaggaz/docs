@@ -1,0 +1,72 @@
+---
+title: "Data Extraction"
+description: "Define what information your AI agent should extract from conversations."
+---
+
+Define what information your AI agent should extract from conversations. Extracted data can be pushed to your CRM automatically or sent to any external system via [outbound webhooks](/configuration/integrations#outbound-webhooks).
+
+## Extraction Fields
+
+From the **Data** page in your dashboard, select an agent and define the fields you want the AI to extract during conversations. Each field has:
+
+- **Field Key** — A machine-readable identifier (e.g. `budget`, `timeline`, `company_size`). Automatically lowercased with underscores.
+- **Type** — The data type for the extracted value:
+  - **Text** — Free-form string (default)
+  - **Number** — Numeric value
+  - **Yes/No** — Boolean
+  - **Selection** — One of a predefined set of options (e.g. "Small", "Medium", "Enterprise")
+- **Description** — Instructions for the AI explaining what to extract (e.g. "The customer's budget range for this project"). This is shown to the AI during the conversation so be specific.
+
+<Tip>
+**Default fields:** A `summary` field is always extracted automatically — it provides a brief summary of the conversation including key points and outcome. You cannot remove this default field.
+</Tip>
+
+## How Extraction Works
+
+During conversations, the AI listens for and extracts the defined information when mentioned by the customer. You don't need to ask explicit questions for each field — the AI picks up relevant data naturally from the conversation context.
+
+The extracted data is stored on the lead record and included in the `extracted_data` property of webhook payloads.
+
+```json title="Example extracted_data in webhook payload"
+{
+  "extracted_data": {
+    "summary": "Customer interested in Enterprise plan, has a team of 15...",
+    "budget": "$50,000-$100,000",
+    "timeline": "Q2 2025",
+    "company_size": "Medium",
+    "decision_maker": true
+  }
+}
+```
+
+## CRM Sync
+
+Once you've defined extraction fields, you can map them to CRM fields in **HubSpot** or **Salesforce**. From the Data page:
+
+1. Select your CRM (HubSpot or Salesforce) — connect it via OAuth if not already connected
+2. Enable **Log Conversations** to automatically log activity with transcript, recording, and summary to the contact record
+3. Add **Field Mappings** to sync extracted data to specific CRM fields
+
+Each field mapping connects:
+
+- **Extracted Field** — One of your defined extraction fields
+- **CRM Object** — The CRM object to write to (e.g. Contacts, Deals for HubSpot; Contact, Lead, Opportunity for Salesforce)
+- **CRM Field** — The specific property on that object (fetched live from your CRM)
+
+<Info>
+**Contact matching:** Contacts are matched by email or phone number. If no match is found, a new contact is created in your CRM automatically.
+</Info>
+
+## Webhook Notifications
+
+If you don't use a CRM — or want to push data to a custom system — set up an [outbound webhook](/configuration/integrations#outbound-webhooks) in your Integrations settings. When a conversation ends, Unibound sends a POST request to your URL with the full conversation data, including the `extracted_data` object containing all your defined fields and their values.
+
+This lets you pipe extracted data into any system — your own database, a marketing platform, a spreadsheet, or a custom workflow.
+
+## Per-Agent Configuration
+
+Extraction fields and CRM mappings are configured per agent. Different agents can extract different fields and map them to different CRM properties. Select the agent from the dropdown at the top of the Data page to configure each one.
+
+<Card title="Need help with data extraction or CRM mapping?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free call and we'll help you set up your fields and integrations.
+</Card>

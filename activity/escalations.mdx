@@ -1,0 +1,50 @@
+---
+title: "AI Escalations"
+description: "When an AI agent can't handle a situation confidently, it triggers an escalation for human review."
+---
+
+When an AI agent encounters a situation it can't handle confidently, it triggers an escalation — flagging the conversation for human review and follow-up.
+
+## What Triggers an Escalation?
+
+After each call, the AI evaluates the conversation and sets a `requires_action` flag if any of the following occurred:
+
+- The call went poorly or the customer raised concerns
+- Technical issues occurred during the call
+- The customer explicitly requested human follow-up
+- Pricing objections were raised that the agent couldn't resolve
+- A complex question was asked that falls outside the agent's knowledge base
+- The customer was upset or expressed frustration
+
+The AI also provides a `requires_action_reason` — a detailed explanation of what happened and what follow-up is needed.
+
+## How Escalations Appear
+
+Escalated conversations are surfaced in several places:
+
+- **Conversation detail page** — An amber "Action Required" card appears with the AI's reason for escalating. See [Action Required](/activity/conversation-details#action-required).
+- **Conversation list** — Threads with the "Awaiting Human Reply" status filter in the [Conversation History](/activity/conversations) page.
+- **Notifications** — If you've configured [notifications](/configuration/notifications), escalations trigger alerts via Slack or email so your team is immediately aware.
+- **Webhooks** — The `requires_action` and `requires_action_reason` fields are included in [outbound webhook](/configuration/integrations#outbound-webhooks) payloads, allowing external systems to route escalations automatically.
+
+## Resolving Escalations
+
+When you open an escalated conversation, review the AI's reason and the full transcript or message thread. You have two options:
+
+- **Take action** — Send a manual reply (on SMS/WhatsApp), follow up via phone, or update the lead in your CRM. When you send a manual reply, AI responses are automatically disabled for that conversation.
+- **Mark as Done** — Click the "Mark as Done" button on the Action Required card to resolve the escalation. This removes it from the pending actions queue.
+
+<Tip>
+**Auto-resolve on view:** Escalations are automatically marked as resolved when you open the conversation detail page, since viewing it indicates you're aware of the issue. You can still take further action if needed.
+</Tip>
+
+## Structured Data from Calls
+
+After each call, the AI extracts structured data including:
+
+- `requires_action` — Boolean flag indicating escalation
+- `requires_action_reason` — Detailed explanation
+- `call_went_smoothly` — Whether the call flowed naturally
+- Qualification answers and extracted data fields (see [Data Extraction](/data/data-extraction))
+
+This structured data is available on the call detail page, pushed to your CRM, and included in webhook payloads.

@@ -1,0 +1,34 @@
+---
+title: "SMS"
+description: "Create an inbound SMS channel so your AI agent can receive and respond to text messages."
+---
+
+Create an inbound SMS channel so your AI agent can receive and respond to text messages intelligently. Leads text your number and get context-aware replies powered by your agent's knowledge base and configuration.
+
+## Setup
+
+To create an SMS channel:
+
+- **Label** — A descriptive name for this workflow (e.g. "Inbound SMS Agent")
+- **Phone Number** — Select a phone number with SMS capability. The number must have SMS enabled (check your Twilio dashboard). Numbers already used by another SMS agent are disabled. Once activated, the phone number is locked to preserve conversation history.
+- **Agent** — Choose which agent will handle incoming messages
+
+<Warning>
+**US numbers:** US phone numbers (+1) require A2P 10DLC registration before SMS can be sent. Check Twilio's compliance requirements for your region.
+</Warning>
+
+## Conversation Flow
+
+SMS conversations work similarly to voice calls but in text format. Your agent uses the same configuration, knowledge base, and qualification questions — adapted for concise text messaging. When the agent receives a message, it reads the full conversation history before composing a reply.
+
+## Auto Follow-Up
+
+Enable automatic follow-ups if the lead doesn't respond. Configure a sequence of delays — the agent sends follow-up messages at each interval until the lead replies or opts out. Each follow-up delay is relative to the previous message.
+
+## Webhook Configuration
+
+When you save the channel and select a phone number, Unibound automatically configures the Twilio SMS webhook for you. If automatic configuration isn't possible (e.g. BYOC numbers), you'll see instructions for manual setup.
+
+## Outbound SMS
+
+For outbound SMS, use an [Outreach Sequence](/channels/outreach-sequence) with an SMS step. The sequence lets you define AI-generated or templated messages with template variables.

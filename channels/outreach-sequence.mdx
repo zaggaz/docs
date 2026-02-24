@@ -1,0 +1,114 @@
+---
+title: "Outreach Sequence"
+description: "Create webhook-triggered, multi-channel workflows to proactively engage leads."
+---
+
+An outreach sequence is a webhook-triggered, multi-channel workflow. When your external system sends a POST request to the webhook URL, Unibound runs a sequence of steps — calls, SMS, emails, or WhatsApp messages — to engage the lead.
+
+## How It Works
+
+Each outreach sequence has its own unique webhook URL with an authentication token. When you create a sequence, Unibound generates the URL automatically. You copy it and integrate it into your CRM, form handler, or any system that can send HTTP POST requests.
+
+## POST Body
+
+When triggering the webhook, send a JSON body with the lead's details. The available fields are:
+
+```json title="Request body"
+{
+  "name": "John Doe",
+  "number": "+1234567890",
+  "email": "john@example.com",
+  "context": "Lead expressed interest via website form",
+  "customProperties": {
+    "firstName": "John",
+    "company": "Acme Corp",
+    "source": "Website Demo",
+    "productInterest": "Enterprise Plan"
+  }
+}
+```
+
+### Field Reference
+
+| Field | Required | Description |
+|---|---|---|
+| `name` | Yes | The lead's full name |
+| `number` | Conditional | Phone number in E.164 format. Required if the sequence includes Call, SMS, or WhatsApp steps. |
+| `email` | Conditional | Email address. Required if the sequence includes Email steps. |
+| `context` | No | Free-text context passed to the AI agent. The agent uses this to personalize the conversation. |
+| `customProperties` | No | An object of key-value pairs. These become template variables you can use when writing copy in sequence steps — e.g. `{firstName}`, `{company}`. |
+
+<Tip>
+**Template variables:** Use `{name}`, `{email}`, or any key from `customProperties` in your SMS/email templates. For example, if you send `"customProperties": { "firstName": "John" }`, you can write `Hi {firstName}` in your message template.
+</Tip>
+
+## Sequence Setup
+
+Before defining steps, you need to configure the sequence's resources — these determine which channels are available:
+
+- **Label** — A descriptive name for the sequence (e.g. "Lead Follow-up", "Sales Outreach")
+- **Phone Number** — Enables Call, SMS, and WhatsApp steps. Outbound sequences can share phone numbers; only inbound call channels require exclusive numbers.
+- **Email Account** — Enables Email steps. Connect a Gmail account to use it for outbound emails.
+- **Agent** — Select the agent that will handle conversations triggered by this sequence.
+
+## Sequence Steps
+
+Each step defines a channel, a delay, and optional content. Steps execute in order — if the lead engages (picks up a call, replies to a message) the sequence stops for that channel.
+
+### Channel Types
+
+#### Call
+
+Places an outbound call to the lead. You can optionally set a custom **Opening Line** for the call step — e.g. `Hi {name}, I'm calling from {company}...`. If left empty, the agent uses its default greeting.
+
+#### SMS
+
+Sends an SMS message. You can choose between:
+
+- **AI Generated** (default) — The AI composes the message based on context and the lead's data
+- **Manual Template** — Write your own message using template variables like `{name}` or `{firstName}`
+
+#### Email
+
+Sends an email from the connected account. Options include:
+
+- **AI Generated** (default) — The AI writes the email body based on context
+- **Manual Template** — Write your own subject and body using template variables
+- **Reply to Previous** — If there's an earlier email step in the sequence, you can send this as a reply on the same thread instead of a new email
+- **Subject** — Set a subject line, or leave empty for AI to generate one (not needed when replying)
+
+#### WhatsApp
+
+Sends a WhatsApp message using the WhatsApp Business API. WhatsApp outbound messages require pre-approved templates from Twilio's Content API. Select a template and fill in the variable values — variables can use the same `{variable}` syntax.
+
+### Step Options
+
+| Option | Description |
+|---|---|
+| **Channel** | Call, SMS, Email, or WhatsApp — availability depends on your configured resources |
+| **Delay** | Time to wait before executing this step (minutes or hours). The first step can also have a delay. |
+| **Run Regardless** | Available on steps after the first. When enabled, this step executes even if a previous call connected or the customer replied. Useful for confirmation emails after a successful call. |
+
+<Info>
+**Sequence behavior:** Steps run in order after their configured delay. If the lead picks up a call or replies to a message, the sequence pauses for that channel. Steps can be drag-and-dropped to reorder them.
+</Info>
+
+## Webhook URL & Testing
+
+After saving, your webhook URL is displayed on the channel page. It includes the sequence ID and a unique authentication token. Copy the URL and integrate it into your external system.
+
+You can test the webhook directly from the dashboard using the built-in test panel — enter a JSON body and send a test request to verify everything works before going live.
+
+<Warning>
+**Unique URLs:** Each outreach sequence has its own webhook URL with its own token. Creating another sequence generates a completely separate URL. You can regenerate the token at any time if needed.
+</Warning>
+
+## Activation
+
+Toggle the connection to **Active** to start processing incoming webhook triggers. When deactivated, webhook requests will be rejected.
+
+See [Webhook Events](/api-reference/webhook-events) for callback events and [Testing Webhooks](/api-reference/testing-webhooks) for detailed testing guidance.
+
+<Card title="Need help setting up your outreach sequence?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free call and we'll help you configure your webhook, steps, and templates.
+</Card>

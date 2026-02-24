@@ -1,0 +1,75 @@
+---
+title: "Webhook Events"
+description: "Receive outbound webhook notifications when important events occur in Unibound."
+---
+
+Unibound can send outbound webhook notifications to your systems when important events occur — such as when a conversation ends, a meeting is booked, or an escalation is triggered. Configure these in [Integrations → Outbound Webhooks](/configuration/integrations#outbound-webhooks).
+
+## How It Works
+
+When you set up an outbound webhook in your [integrations settings](/configuration/integrations#outbound-webhooks), Unibound will POST event payloads to your configured URL whenever a conversation completes. This happens automatically at the end of each interaction — after the call ends, the email thread concludes, or the messaging exchange finishes.
+
+## Event Payload
+
+The webhook payload includes the full conversation outcome — lead details, qualification answers, extracted data, booking status, and escalation flags.
+
+```json title="Example: conversation ended payload"
+{
+  "event": "conversation.ended",
+  "timestamp": "2025-01-15T14:05:30Z",
+  "agent": {
+    "id": "agent_abc123",
+    "name": "Sales Agent"
+  },
+  "channel": "call",
+  "lead": {
+    "name": "Jane Doe",
+    "phone_number": "+14155551234",
+    "email": "jane@example.com",
+    "company": "Acme Corp",
+    "status": "qualified"
+  },
+  "conversation": {
+    "duration_seconds": 180,
+    "meeting_booked": true,
+    "meeting_booked_at": "2025-01-20T10:00:00Z",
+    "call_went_smoothly": true,
+    "requires_action": false,
+    "requires_action_reason": null
+  },
+  "extracted_data": {
+    "summary": "Customer interested in Enterprise plan, team of 15 people...",
+    "budget": "$50k-$100k",
+    "team_size": "15",
+    "timeline": "Q2 2025"
+  },
+  "qualification": {
+    "What is your budget range?": "$50k-$100k",
+    "How many team members?": "15",
+    "What is your timeline?": "Q2 2025"
+  }
+}
+```
+
+## Key Fields
+
+| Field | Description |
+|---|---|
+| `conversation.requires_action` | Whether the AI flagged this for human follow-up (see [AI Escalations](/activity/escalations)) |
+| `conversation.requires_action_reason` | Detailed explanation of why escalation was triggered |
+| `conversation.call_went_smoothly` | Whether the call flowed naturally without issues |
+| `conversation.meeting_booked` | Whether a meeting was successfully booked |
+| `extracted_data` | Fields extracted by the AI (see [Data Extraction](/data/data-extraction)) |
+| `qualification` | Answers to your configured qualification questions |
+
+<Tip>
+**Use with automation tools:** Point your outbound webhook at a Zapier webhook, n8n endpoint, or any HTTP-capable automation platform to trigger follow-up workflows — CRM updates, Slack notifications, task creation, and more.
+</Tip>
+
+## Setting Up Outbound Webhooks
+
+Go to [Integrations → Outbound Webhooks](/configuration/integrations#outbound-webhooks) to configure your webhook URL. All conversation-end events for all agents in your organization will be sent to this URL.
+
+<Card title="Need help?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free support call and we'll help you get set up.
+</Card>

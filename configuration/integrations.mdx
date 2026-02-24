@@ -1,0 +1,85 @@
+---
+title: "Integrations"
+description: "Connect Unibound to your existing tools — CRMs, calendars, messaging platforms, and custom systems via webhooks."
+---
+
+Connect Unibound to your existing tools — CRMs, calendars, messaging platforms, and custom systems via webhooks. All integrations are managed from the Integrations hub in your dashboard.
+
+## Google Calendar
+
+Connect Google Calendar so your agent can check real-time availability and book meetings. Authorize with your Google account, then select which calendar to use. Configuration options (duration, timezone, lead time) are set per-agent in the [Booking](/agent-setup/booking) step.
+
+## HubSpot
+
+Connect HubSpot to sync conversations and lead data to your CRM. Once connected, Unibound automatically:
+
+- Creates or updates contacts based on lead information
+- Logs conversation summaries as notes on the contact record
+- Updates lead status and qualification data as custom properties
+- Provides calendar booking through HubSpot meeting links
+
+<Tip>
+**Field mapping:** Customize how Unibound data maps to HubSpot properties in the integration settings. Default mappings cover name, email, phone, and qualification data.
+</Tip>
+
+## Salesforce
+
+Connect Salesforce to log leads and conversation data. Authorize with your Salesforce account and Unibound will sync lead records, conversation summaries, and qualification outcomes to your Salesforce org.
+
+## Slack
+
+Connect Slack to receive notifications when conversations end. Once connected, you can select a channel to post conversation summaries to. Slack is also used for the [Notifications](/configuration/notifications) feature.
+
+## Outbound Webhooks
+
+Send conversation data to any external system by configuring an outbound webhook. Set a URL, choose which event types to subscribe to, and Unibound will POST event data to your endpoint.
+
+### Event Types
+
+- **conversation.ended** — Fired when an AI conversation ends (call, SMS, WhatsApp, or email). Includes conversation details, outcome (meeting booked, opted out), and any extracted data.
+- **webhook.received** — Fired when a lead is triggered via your assignment's webhook URL. Includes the lead ID and the raw trigger body.
+
+```json title="Example conversation.ended payload"
+{
+  "id": "evt_abc123",
+  "type": "conversation.ended",
+  "created_at": "2025-01-15T10:30:00Z",
+  "organization_id": "org_xyz",
+  "assignment_id": "asn_456",
+  "lead_id": "lead_789",
+  "payload": {
+    "channel": "call",
+    "customer_contact": "+14155551234",
+    "conversation": {
+      "started_at": "2025-01-15T10:25:00Z",
+      "ended_at": "2025-01-15T10:30:00Z",
+      "message_count": 12
+    },
+    "outcome": {
+      "meeting_booked": true,
+      "opted_out": false
+    },
+    "extracted_data": {
+      "summary": "Customer interested in Enterprise plan...",
+      "budget": "$50k-$100k",
+      "team_size": "6-20"
+    }
+  }
+}
+```
+
+<Tip>
+**Extracted data:** The `extracted_data` object contains all fields defined in your [Data Extraction](/data/data-extraction) configuration. Use this to pipe conversation insights into any external system.
+</Tip>
+
+### Testing
+
+Use the "Send Test Event" button to deliver a sample `webhook.received` event to your endpoint. This helps verify your webhook URL and event handling before going live. See the [Testing Webhooks](/api-reference/testing-webhooks) guide for more details.
+
+## Connecting & Disconnecting
+
+Each integration uses OAuth for secure authentication. Click "Connect" to start the authorization flow in a popup window. To disconnect, click the integration again. Only organization admins can connect or disconnect integrations.
+
+<Card title="Need help with integrations?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free call and we'll help you connect your CRM, webhooks, or messaging platforms.
+</Card>

@@ -1,0 +1,71 @@
+---
+title: "Conversation Details"
+description: "View the full detail of an individual interaction between your AI agent and a lead."
+---
+
+The conversation detail page gives you a full view of an individual interaction between your AI agent and a lead. The layout and available actions vary by channel.
+
+## Call Details
+
+The call detail page has a two-column layout: the **transcript** on the left and an **info panel** on the right.
+
+### Transcript & Recording
+
+Voice calls are transcribed in real-time. The transcript shows speaker labels (**Agent** and **User**) with the full conversation flow. If a recording is available, an inline audio player appears at the top with play/pause, seek, and duration display.
+
+### Call Info Panel
+
+The right panel shows:
+
+- **Agent details** — Which agent and channel handled the call, with a link to channel settings
+- **Lead information** — Name, phone, email, company, status, and opt-out status, with a link to the lead profile
+- **Call metadata** — Status (completed, no-answer, voicemail, failed), attempt number, scheduled time, duration, and meeting booked status
+- **CRM logging** — Whether the call was logged to HubSpot or Salesforce, with status and any errors
+
+## SMS Details
+
+SMS conversations display the full message thread in a chat-style view, with outbound messages (from the agent) and inbound messages (from the lead) shown with distinct styling.
+
+### Sending Manual Replies
+
+<Info>
+**Human takeover:** You can send manual SMS replies directly from the conversation detail page. When you send a manual reply, **AI responses are automatically disabled** for that conversation — the AI will stop responding so you can handle the lead yourself.
+</Info>
+
+Type your message in the input field at the bottom and click send. You can also send voice notes — record audio directly in the browser and it will be sent as an MMS attachment.
+
+### AI Response Toggle
+
+A toggle switch lets you turn AI responses on or off for each conversation. When disabled, the agent will not automatically respond to incoming messages from that lead. You can re-enable it at any time to hand the conversation back to the AI.
+
+## WhatsApp Details
+
+WhatsApp conversations work the same as SMS — a chat-style thread with manual reply capability, voice note support, and an AI response toggle. When you send a manual WhatsApp reply, AI is disabled for that conversation.
+
+<Warning>
+**24-hour messaging window:** WhatsApp requires that businesses respond within 24 hours of the last customer message. Manual replies sent outside this window may fail. The AI agent handles this automatically, but keep it in mind when replying manually.
+</Warning>
+
+## Email Details
+
+Email conversations show the full thread with each message displayed as a collapsible card. The most recent message appears at the top. Each email shows:
+
+- Direction (inbound/outbound) with arrow icon
+- Subject line
+- Full email body
+- Send status and delivery confirmation
+- AI confidence and customer intent classification (booking, question, complaint, interested, not interested, info request)
+
+## Action Required
+
+When an AI agent encounters a situation it can't handle — a complex question, an upset lead, or a request outside its scope — it flags the conversation as requiring action. See [AI Escalations](/activity/escalations) for more detail.
+
+An amber "Action Required" card appears on the detail page with the agent's reason for escalating. You can review the situation and click **Mark as Done** once resolved.
+
+## Pending Follow-Ups
+
+If the agent has scheduled follow-up messages for this lead, they appear on the detail page showing the channel, scheduled time, and attempt number. This helps you understand what automated outreach is planned before deciding whether to intervene manually.
+
+<Card title="Need help?" icon="calendar" href="https://meetings.hubspot.com/james2781/support-call">
+  Book a free support call and we'll help you get set up.
+</Card>
