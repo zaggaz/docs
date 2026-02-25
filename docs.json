@@ -21,9 +21,9 @@
           "href": "https://app.unibound.ai"
         },
         {
-          "anchor": "Blog",
-          "icon": "newspaper",
-          "href": "https://mintlify.com/blog"
+          "anchor": "Website",
+          "icon": "globe",
+          "href": "https://unibound.ai"
         }
       ]
     },
@@ -35,10 +35,26 @@
             "group": "Getting Started",
             "pages": [
               "getting-started/overview",
-              "getting-started/quick-start",
-              "getting-started/dashboard"
+              "getting-started/dashboard",
+              "getting-started/navigation"
             ]
           },
+          {
+            "group": "Tutorials",
+            "pages": [
+              "getting-started/get-started",
+              "tutorials/phone-agent",
+              "tutorials/sms-agent",
+              "tutorials/whatsapp-agent",
+              "tutorials/email-agent",
+              "tutorials/outreach-sequence"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Pages",
+        "groups": [
           {
             "group": "Agent Setup",
             "pages": [

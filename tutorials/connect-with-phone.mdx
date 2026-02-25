@@ -1,0 +1,84 @@
+---
+title: "Connect to Phone Calls"
+description: "Enable your AI agent to receive and make phone calls."
+---
+
+This tutorial walks you through setting up an inbound call channel so your AI agent can answer incoming calls automatically.
+
+## Video Tutorial
+
+<iframe
+  width="100%"
+  height="400"
+  src=""
+  title="Connect Your Agent to Phone Calls"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+## Prerequisites
+
+- A created AI agent (see [Set Up Your First AI Agent](/tutorials/setup-inbound-agent))
+- A phone number connected to your Unibound account (see [Phone Numbers](/configuration/phone-numbers))
+
+## Step-by-Step Instructions
+
+### 1. Get a Phone Number
+
+First, you need a phone number for your agent to use:
+
+- Go to **Configuration → Phone Numbers**
+- Click **"Get a Phone Number"** to purchase a new number through Unibound
+- Select your region (US or UK), number type, and preferences
+- Or use **"Bring Your Own"** to import an existing Twilio number
+
+Once your number is active, you can assign it to your agent.
+
+### 2. Create an Inbound Call Channel
+
+Navigate to **Channels** and click **"New Channel"** → select **Calls**.
+
+### 3. Configure the Channel
+
+Fill in the following details:
+
+- **Label** — Give your channel a descriptive name (e.g., "Inbound Sales", "Customer Support")
+- **Phone Number** — Select the phone number your agent will use
+- **Agent** — Choose which agent will handle incoming calls
+- **Opening Line** — Define what the agent says when answering (e.g., "Hello! Thank you for calling. How can I help you today?")
+
+<Warning>
+  **Keep it concise:** Callers expect a response within 2–3 seconds. Long
+  greetings can lead to hang-ups.
+</Warning>
+
+### 4. Activate the Channel
+
+Toggle the channel to **Live**. This sets up call routing so incoming calls reach your AI agent.
+
+## Call Flow
+
+Once activated:
+
+1. A caller dials your number
+2. Your agent answers with the configured opening line
+3. The conversation flows naturally based on the agent's knowledge and configuration
+4. Qualification questions are woven into the conversation
+5. If qualified, the agent offers to book a meeting
+6. Post-call actions trigger automatically (CRM logging, notifications, etc.)
+
+## Call Recording
+
+All calls are recorded and transcribed automatically. You can review recordings and transcripts in the conversation history for quality assurance and compliance.
+
+## Outbound Calls
+
+To make outbound calls, set up an [Outreach Sequence](/tutorials/outreach-sequence) and add a **Call** step to it.
+
+<Card
+  title="Need help?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free support call and we'll help you get set up.
+</Card>

@@ -1,0 +1,98 @@
+---
+title: "Connect to Email"
+description: "Enable your AI agent to receive and respond to emails automatically."
+---
+
+This tutorial walks you through setting up an email channel so your AI agent can handle incoming emails automatically.
+
+## Video Tutorial
+
+<iframe
+  width="100%"
+  height="400"
+  src=""
+  title="Connect Your Agent to Email"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+## Prerequisites
+
+- A created AI agent (see [Set Up Your First AI Agent](/tutorials/setup-inbound-agent))
+- A Gmail account (Outlook coming soon)
+
+## Step-by-Step Instructions
+
+### 1. Connect Your Gmail Account
+
+Go to **Configuration → Email Accounts** and click **"Connect Gmail"**.
+
+Unibound will open an OAuth flow where you:
+
+1. Sign in with your Gmail account
+2. Authorize Unibound to send and receive emails on your behalf
+3. Confirm the connection
+
+<Info>
+  **Email providers:** Gmail is fully supported. Outlook support is coming soon.
+  You can connect multiple Gmail accounts if needed.
+</Info>
+
+### 2. Create an Email Channel
+
+Navigate to **Channels** and click **"New Channel"** → select **Email**.
+
+### 3. Configure the Channel
+
+Fill in the following details:
+
+- **Label** — Give your channel a descriptive name (e.g., "Inbound Sales Email", "Support Email")
+- **Email Account** — Select the Gmail account your agent will use to send and receive emails
+- **Agent** — Choose which agent will handle incoming emails
+
+### 4. Set Response Criteria (Optional)
+
+Control which emails your agent responds to:
+
+- **Replies Only Mode** — Enable if you only want the agent to respond to replies from your outreach campaigns
+- **Response Criteria** — Describe which emails should trigger a response (e.g., "Only respond to product inquiries, pricing, or demo requests. Ignore newsletters and automated notifications."). Leave blank to respond to all business-related emails.
+
+### 5. Enable Auto Follow-Up (Optional)
+
+If you want your agent to send follow-up emails when the lead doesn't respond:
+
+- Toggle **"Enable Auto Follow-Up"**
+- Set delays for each follow-up (in hours or days)
+- Follow-ups are sent on the same thread
+
+### 6. Activate the Channel
+
+Toggle the channel to **Live**. Your agent can now handle incoming email conversations.
+
+## Email Conversation Flow
+
+Once activated:
+
+1. An email arrives at your Gmail inbox
+2. Your agent reads the email and full conversation history
+3. The agent composes a context-aware reply based on its knowledge base
+4. The agent can qualify the lead and facilitate meetings
+5. Multiple emails stay on the same thread
+6. Auto follow-ups trigger if the lead doesn't respond
+
+## Outbound Email
+
+To send email campaigns proactively, set up an [Outreach Sequence](/tutorials/outreach-sequence) with an **Email** step. You can:
+
+- Write manual templates with variables like `{firstName}` or `{company}`
+- Let the AI generate the email body
+- Chain multiple emails as replies on the same thread
+
+## Email Threads
+
+Your agent maintains full context across entire email threads, ensuring coherent and contextually appropriate responses.
+
+## Next Steps
+
+- [Set up Outreach Sequences](/tutorials/outreach-sequence)
+- [Monitor conversations and leads](/activity/conversations)

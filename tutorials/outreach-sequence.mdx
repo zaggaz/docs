@@ -1,0 +1,150 @@
+---
+title: "Create an Outreach Sequence"
+description: "Set up webhook-triggered, multi-channel campaigns to proactively engage leads."
+---
+
+This tutorial walks you through creating an outreach sequence to send proactive messages to leads via calls, SMS, WhatsApp, or email.
+
+## Video Tutorial
+
+<Info>
+Video tutorial coming soon
+</Info>
+
+## Prerequisites
+
+- A created AI agent (see [Set Up Your First AI Agent](/tutorials/setup-inbound-agent))
+- At least one configured resource (phone number for calls/SMS/WhatsApp, or Gmail account for email)
+
+## What Is an Outreach Sequence?
+
+An outreach sequence is a webhook-triggered, multi-channel workflow. When your external system (CRM, form tool, automation platform) sends a webhook, Unibound runs a series of steps to engage the lead with calls, SMS, emails, or WhatsApp messages.
+
+## Step-by-Step Instructions
+
+### 1. Create a New Outreach Sequence
+
+Navigate to **Channels** and click **"New Channel"** → select **Outreach Sequence**.
+
+### 2. Configure Resources
+
+First, set up the resources your sequence will use:
+
+- **Label** — Give your sequence a descriptive name (e.g., "Lead Follow-up", "Sales Outreach")
+- **Phone Number** — (Optional) Enable Call, SMS, and WhatsApp steps by selecting a phone number
+- **Email Account** — (Optional) Enable Email steps by selecting a Gmail account
+- **Agent** — Choose which agent will run the sequence
+
+### 3. Add Sequence Steps
+
+Click **"Add Step"** to define each action in your sequence:
+
+**Call Step:**
+
+- Set a delay before the call (in minutes or hours)
+- Optionally customize the opening line
+- The agent will call the lead automatically
+
+**SMS Step:**
+
+- Set a delay before the message
+- Choose between AI-generated or manual template
+- For templates, use variables like `{firstName}` or `{company}`
+
+**Email Step:**
+
+- Set a delay before the email
+- Choose between AI-generated or manual template
+- Optionally mark as a reply to a previous email
+- Set a subject line (AI can generate if left blank)
+
+**WhatsApp Step:**
+
+- Set a delay before the message
+- Select a pre-approved WhatsApp template
+- Map variables to your lead data
+
+### 4. Configure Step Options
+
+For each step, you can set:
+
+- **Delay** — Time to wait before executing (minutes, hours, or days)
+- **Run Regardless** — (Steps after the first) Execute this step even if a previous call was answered or a message was replied to
+
+<Info>
+  **Sequence behavior:** Steps execute in order after their configured delay. If
+  the lead picks up a call or replies to a message, subsequent steps pause for
+  that channel. "Run Regardless" overrides this behavior.
+</Info>
+
+### 5. Test Your Sequence
+
+After saving, your webhook URL is displayed. Use the built-in test panel to:
+
+1. Enter a sample JSON body with lead details
+2. Click **"Send Test"**
+3. Watch the sequence execute in real-time
+
+Example JSON:
+
+```json
+{
+  "name": "John Doe",
+  "number": "+1234567890",
+  "email": "john@example.com",
+  "context": "Lead from website demo",
+  "customProperties": {
+    "firstName": "John",
+    "company": "Acme Corp"
+  }
+}
+```
+
+### 6. Activate the Sequence
+
+Toggle the sequence to **Active** to start processing incoming webhook triggers. When deactivated, webhook requests are rejected.
+
+## Triggering Your Sequence
+
+Send a POST request to your webhook URL with the lead data:
+
+```bash
+curl -X POST https://api.unibound.ai/webhook/... \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "number": "+1234567890",
+    "email": "john@example.com",
+    "customProperties": {
+      "firstName": "John",
+      "company": "Acme Corp"
+    }
+  }'
+```
+
+## Template Variables
+
+Use variables in SMS, Email, and WhatsApp steps:
+
+- `{name}` — Lead's full name
+- `{email}` — Lead's email address
+- `{number}` — Lead's phone number
+- Any key from `customProperties` — e.g., `{firstName}`, `{company}`
+
+## Webhook Events
+
+Unibound sends callback events when conversations complete. See [Webhook Events](/api-reference/webhook-events) for details.
+
+## Next Steps
+
+- [Learn about webhook events](/api-reference/webhook-events)
+- [Monitor your sequences](/activity/conversations)
+- [Test webhooks](/api-reference/testing-webhooks)
+
+<Card
+  title="Need help?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free call and we'll help you configure your webhook and sequences.
+</Card>

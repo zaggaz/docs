@@ -1,0 +1,84 @@
+---
+title: "Connect to SMS"
+description: "Enable your AI agent to receive and respond to text messages."
+---
+
+This tutorial walks you through setting up an SMS channel so your AI agent can handle incoming text messages automatically.
+
+## Video Tutorial
+
+<iframe
+  width="100%"
+  height="400"
+  src=""
+  title="Connect Your Agent to SMS"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+## Prerequisites
+
+- A created AI agent (see [Set Up Your First AI Agent](/tutorials/setup-inbound-agent))
+- A phone number with SMS capability (see [Phone Numbers](/configuration/phone-numbers))
+
+## SMS Requirements
+
+<Warning>
+  **US numbers:** US phone numbers (+1) require A2P (Application-to-Person)
+  10DLC registration. Check your Twilio compliance status to ensure SMS is
+  enabled.
+</Warning>
+
+## Step-by-Step Instructions
+
+### 1. Ensure Your Number Supports SMS
+
+Go to **Configuration → Phone Numbers** and verify your phone number has SMS capability enabled. If you're using a Twilio number, check your Twilio dashboard to confirm.
+
+### 2. Create an SMS Channel
+
+Navigate to **Channels** and click **"New Channel"** → select **SMS**.
+
+### 3. Configure the Channel
+
+Fill in the following details:
+
+- **Label** — Give your channel a descriptive name (e.g., "Inbound SMS Agent", "SMS Support")
+- **Phone Number** — Select a phone number with SMS enabled. Numbers already used by another SMS agent are disabled
+- **Agent** — Choose which agent will handle incoming SMS messages
+
+### 4. Enable Auto Follow-Up (Optional)
+
+If you want your agent to send follow-up messages when the lead doesn't respond:
+
+- Toggle **"Enable Auto Follow-Up"**
+- Set delays for each follow-up (e.g., 1 hour, 3 hours, 1 day)
+- Follow-up delays are relative to the previous message
+
+### 5. Activate the Channel
+
+Toggle the channel to **Live**. This enables SMS routing so incoming messages reach your agent.
+
+## SMS Conversation Flow
+
+Once activated:
+
+1. A lead texts your number
+2. Your agent reads the conversation history
+3. The agent composes a context-aware reply based on its knowledge base and configuration
+4. Qualification questions are woven into the text conversation
+5. Auto follow-ups trigger if the lead doesn't respond
+
+## Webhook Configuration
+
+Unibound automatically configures your Twilio SMS webhook when you save and activate the channel. For some number types, you may need to manually add the webhook — instructions will be displayed if needed.
+
+## Outbound SMS
+
+To send SMS messages proactively, set up an [Outreach Sequence](/tutorials/outreach-sequence) and add an **SMS** step to it.
+
+## Next Steps
+
+- [Connect WhatsApp](/tutorials/connect-with-whatsapp)
+- [Enable Email](/tutorials/connect-with-email)
+- [Set up Outreach Sequences](/tutorials/outreach-sequence)

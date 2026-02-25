@@ -1,0 +1,295 @@
+---
+title: "Set Up Email from Scratch"
+description: "Connect Gmail to enable your AI agent to handle email conversations automatically."
+---
+
+This tutorial walks you through setting up email conversations for your AI agent, from Gmail authentication to handling incoming messages.
+
+## Video Tutorial
+
+<Info>
+Video tutorial coming soon
+</Info>
+
+## Prerequisites
+
+- A created and activated AI agent (see [Set Up Your First Agent](/tutorials/setup-agent))
+- Access to a Gmail account (not a workspace email initially)
+- Ability to authorize OAuth applications
+- Optional: Gmail account admin access for workspace configuration
+
+## What You'll Learn
+
+In this tutorial, you'll:
+
+- Connect a Gmail account to Unibound
+- Create an email inbound channel
+- Configure response criteria
+- Set up auto follow-ups
+- Activate email conversations
+- Test incoming emails
+
+## Gmail Account Setup
+
+### Gmail Account Types Supported
+
+**Personal Gmail Accounts:**
+
+- ✅ Fully supported
+- ✅ Easiest to set up
+- ✅ Recommended for testing and small teams
+
+**Google Workspace Accounts:**
+
+- ✅ Supported for workspace admins
+- ✅ Requires OAuth app verification
+- ⏳ Outlook support coming soon
+
+<Info>
+  For Google Workspace, ensure your workspace admin has authorized Unibound to
+  access Gmail. Contact your workspace administrator for help.
+</Info>
+
+## Step 1: Connect Your Gmail Account
+
+### Navigate to Email Accounts
+
+1. Go to **Configuration → Email Accounts**
+2. Click **"Connect Gmail"**
+3. A OAuth authorization window opens
+
+### Authorize Unibound
+
+In the authorization screen:
+
+1. Sign in with your Gmail account (if not already signed in)
+2. Review the permissions Unibound is requesting:
+   - Read and send emails
+   - Manage mailbox labels
+   - Modify Gmail settings
+3. Click **"Allow"** or **"Grant Access"**
+4. You'll be redirected back to Unibound
+
+### Verify Connection
+
+After authorization:
+
+1. You should see your Gmail account listed under Email Accounts
+2. Status should show "Connected"
+3. You're ready to create an email channel
+
+<Warning>
+  If authorization fails, ensure: - You're using the correct Gmail account - 2FA
+  is enabled (you may need to generate an app password) - Your Gmail account
+  allows less secure app access (check Gmail settings)
+</Warning>
+
+## Step 2: Create an Email Channel
+
+1. Navigate to **Channels** from sidebar
+2. Click **"New Channel"** → select **Email**
+
+## Step 3: Configure Email Settings
+
+Fill in required fields:
+
+**Basic Setup:**
+
+- **Label** — Descriptive name (e.g., "Inbound Sales Email", "Support Email")
+- **Email Account** — Select the Gmail account you just connected
+- **Agent** — Choose which agent should handle emails
+
+## Step 4: Set Response Criteria
+
+Configure which emails your agent should respond to:
+
+### Replies Only Mode
+
+Toggle **"Replies Only"** if:
+
+- You only want responses to emails YOU initiated
+- You're running email outreach campaigns
+- You want to avoid responding to cold incoming emails
+
+Leave OFF if your agent should respond to all incoming emails.
+
+### Custom Response Criteria
+
+Describe which emails should get responses:
+
+**Examples:**
+
+- "Only respond to product inquiries, pricing questions, and demo requests"
+- "Ignore newsletters, automated notifications, and spam"
+- "Respond to support-related emails and feature requests"
+- "Only respond to emails from our target customer profiles"
+
+Leave blank to respond to all business-relevant emails.
+
+## Step 5: Configure Auto Follow-Up (Optional)
+
+Set up automatic follow-up emails if leads don't respond:
+
+1. Toggle **"Enable Auto Follow-Up"**
+2. Set follow-up intervals:
+   - After 2 hours
+   - After 1 day
+   - After 3 days
+   - (Add as many as needed)
+
+<Tip>
+  Space follow-ups reasonably. Too many create a spammy feel; too few and you
+  won't re-engage. Typical pattern: 2 hours, 1 day, 3 days.
+</Tip>
+
+**Follow-up behavior:**
+
+- Each follow-up sent on the same thread
+- Agent reads conversation history before composing
+- Follow-ups stop once the lead responds
+
+## Step 6: Activate the Channel
+
+1. Review all your email channel settings
+2. Toggle the channel to **Live**
+3. Emails to your Gmail account now route to your agent
+
+## Email Conversation Flow
+
+When an email arrives:
+
+1. Unibound checks if it matches your response criteria
+2. Your agent reads the email and full conversation history
+3. Agent composes a context-aware reply based on knowledge base
+4. Response is sent from your Gmail account
+5. Conversation continues on the same thread
+6. Agent maintains context across multiple emails
+7. Auto follow-ups trigger if configured and no response received
+
+## Email Threading
+
+Your agent understands email threads:
+
+- **Full history context** — Agent knows the entire conversation history
+- **Proper quoting** — Agent references previous messages appropriately
+- **Subject line continuity** — Replies maintain original subject (Re: Your Subject)
+- **Professional formatting** — Maintains all email conventions
+
+## Handling Different Email Types
+
+**Marketing/Sales Email:**
+
+- Agent can discuss pricing, features, and benefits
+- Can qualify the lead
+- Can book meetings or demos
+
+**Support Email:**
+
+- Agent can answer technical questions
+- Can escalate complex issues
+- Can provide troubleshooting steps
+
+**Feedback/Suggestion Email:**
+
+- Agent can acknowledge and thank the sender
+- Can ask follow-up questions
+- Can escalate to product team if appropriate
+
+## Testing Your Email Setup
+
+1. Send a test email to your Gmail account from another email address
+2. Verify your agent responds appropriately
+3. Test a full conversation thread (multiple exchanges)
+4. Test that auto follow-ups trigger correctly
+5. Review conversation in dashboard for quality
+
+## Outbound Email Campaigns
+
+Once comfortable with inbound email:
+
+Set up [Outreach Sequences](/tutorials/outreach-sequence) with email steps to:
+
+- Send bulk prospecting campaigns
+- Create templated sequences with variables
+- Chain multiple emails on the same thread
+- Mix emails with other channels (email → SMS → call)
+
+## Gmail Best Practices
+
+**Keep your inbox clean:**
+
+- Unibound auto-logs conversations
+- Archive handled emails to reduce clutter
+- Use Gmail labels to organize by type
+
+**Security considerations:**
+
+- Keep your Gmail account password secure
+- Enable 2FA on Gmail account
+- Monitor connected applications in Gmail settings
+- Disconnect Unibound if you no longer use it
+
+**Avoiding spam filters:**
+
+- Add your company domain to SPF/DKIM records
+- Keep response quality high (avoid generic templates)
+- Monitor bounce rates
+- Respect email best practices
+
+## Troubleshooting
+
+**Agent not responding to emails:**
+
+- Verify channel is **Live**
+- Check your email response criteria
+- Review agent configuration and knowledge base
+- Test with simple emails first
+
+**Emails going to spam:**
+
+- Check your Gmail settings
+- Verify email authentication (SPF, DKIM)
+- Review email content for spam triggers
+- Ensure company domain is properly configured
+
+**Can't connect Gmail:**
+
+- Verify you authorized Unibound
+- Check Gmail account is active
+- Try reconnecting: disconnect and authorize again
+- If using Workspace, contact your admin
+
+**Auto follow-ups not triggering:**
+
+- Verify follow-ups are enabled
+- Check that delays are configured
+- Ensure agent hasn't been deactivated
+- Review conversation status in dashboard
+
+## Advanced Email Features
+
+**Email templates:**
+
+- Use manual templates in outreach sequences
+- Include variables like `{firstName}`, `{company}`
+- Maintain consistent branding and tone
+
+**Multi-step campaigns:**
+
+- Create complex sequences mixing email, SMS, WhatsApp
+- Each touches within the customer's preferences
+- Track engagement across channels
+
+**CRM integration:**
+
+- Log email conversations to HubSpot or Salesforce
+- Map email metadata to custom fields
+- Automate lead scoring based on email engagement
+
+<Card
+  title="Need help?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free support call for email configuration help.
+</Card>

@@ -1,0 +1,93 @@
+---
+title: "Connect to WhatsApp"
+description: "Enable your AI agent to handle WhatsApp conversations automatically."
+---
+
+This tutorial walks you through setting up a WhatsApp channel so your AI agent can respond to incoming WhatsApp messages.
+
+## Video Tutorial
+
+<iframe
+  width="100%"
+  height="400"
+  src=""
+  title=""
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+## Prerequisites
+
+- A created AI agent (see [Set Up Your First AI Agent](/tutorials/setup-inbound-agent))
+- A Twilio account with WhatsApp capability
+- A phone number with WhatsApp enabled (see [Phone Numbers](/configuration/phone-numbers))
+
+## Step-by-Step Instructions
+
+### 1. Ensure WhatsApp Is Enabled on Your Number
+
+Go to **Configuration → Phone Numbers** and verify your Twilio number has WhatsApp capability. If not, enable it in your Twilio dashboard.
+
+### 2. Create a WhatsApp Channel
+
+Navigate to **Channels** and click **"New Channel"** → select **WhatsApp**.
+
+### 3. Configure the Channel
+
+Fill in the following details:
+
+- **Label** — Give your channel a descriptive name (e.g., "Inbound WhatsApp", "WhatsApp Support")
+- **Phone Number** — Select a Twilio number with WhatsApp capability. Numbers already in use are disabled
+- **Agent** — Choose which agent will handle WhatsApp messages
+
+### 4. Enable Auto Follow-Up (Optional)
+
+If you want your agent to send follow-up messages when the lead doesn't respond:
+
+- Toggle **"Enable Auto Follow-Up"**
+- Set delays for each follow-up (within WhatsApp's 24-hour messaging window)
+
+<Info>
+  **24-hour window:** WhatsApp enforces a 24-hour messaging window. After 24
+  hours of no customer messages, your agent must use an approved template to
+  re-initiate contact. Unibound tracks these windows automatically.
+</Info>
+
+### 5. Configure Webhook (May Be Required)
+
+After saving:
+
+1. Unibound will attempt automatic webhook configuration
+2. If manual setup is needed, you'll see the webhook URL and instructions
+3. Copy the webhook URL and configure it in your Twilio WhatsApp dashboard
+
+### 6. Activate the Channel
+
+Toggle the channel to **Live**. Your agent can now handle incoming WhatsApp messages.
+
+## WhatsApp Conversation Flow
+
+Once activated:
+
+1. A lead messages your WhatsApp number
+2. Your agent reads the conversation history
+3. The agent composes a context-aware reply based on its knowledge base
+4. The agent can qualify leads and facilitate meetings
+5. If the 24-hour window expires, approved templates are used for re-engagement
+
+## Outbound WhatsApp
+
+To send WhatsApp messages proactively, set up an [Outreach Sequence](/tutorials/outreach-sequence) with a **WhatsApp** step. Note that outbound messages require pre-approved templates from Twilio's Content API.
+
+<Card
+  title="Need help with WhatsApp setup?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free call and we'll walk you through the Twilio WhatsApp configuration.
+</Card>
+
+## Next Steps
+
+- [Enable Email](/tutorials/connect-with-email)
+- [Set up Outreach Sequences](/tutorials/outreach-sequence)

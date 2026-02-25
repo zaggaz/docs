@@ -1,0 +1,252 @@
+---
+title: "Set Up WhatsApp from Scratch"
+description: "Connect WhatsApp to let your AI agent handle conversations on the world's most popular messaging platform."
+---
+
+This tutorial guides you through setting up WhatsApp messaging for your AI agent, from Twilio integration to activating automatic responses.
+
+## Video Tutorial
+
+<Info>
+Video tutorial coming soon
+</Info>
+
+## Prerequisites
+
+- A created and activated AI agent (see [Set Up Your First Agent](/tutorials/setup-agent))
+- A Twilio account with WhatsApp enabled
+- A phone number with WhatsApp capability
+- Meta WhatsApp Business Account (WABA) connected to Twilio
+- Business verification with Meta (for high volume messaging)
+
+## What You'll Learn
+
+In this tutorial, you'll:
+
+- Verify WhatsApp capability on your Twilio number
+- Create a WhatsApp inbound channel
+- Configure the webhook connection
+- Understand WhatsApp's 24-hour window
+- Set up auto follow-ups within constraints
+- Test incoming WhatsApp messages
+
+## Prerequisites Checklist
+
+Before starting, confirm you have:
+
+- [ ] Twilio account with verified status
+- [ ] WhatsApp Business Account (WABA) created in Meta Business Suite
+- [ ] WABA connected to your Twilio account
+- [ ] Phone number assigned to your WABA
+- [ ] WhatsApp Business Profile approved by Meta
+- [ ] Your phone number verified as WhatsApp-capable in Twilio
+
+<Info>
+  **Getting started:** If you don't have WhatsApp enabled yet, contact Twilio
+  support to request WhatsApp API access. Meta approval typically takes 24-48
+  hours.
+</Info>
+
+## Step 1: Verify WhatsApp Capability
+
+1. Go to **Configuration → Phone Numbers**
+2. Select your phone number
+3. Confirm WhatsApp is enabled
+4. If not enabled:
+   - Log into Twilio
+   - Go to Messaging → WhatsApp
+   - Verify your WABA and enable the number
+
+## Step 2: Create a WhatsApp Channel
+
+1. Navigate to **Channels** from sidebar
+2. Click **"New Channel"** → select **WhatsApp**
+
+## Step 3: Configure WhatsApp Channel
+
+Fill in required fields:
+
+**Basic Setup:**
+
+- **Label** — Descriptive name (e.g., "WhatsApp Support", "WhatsApp Sales")
+- **Phone Number** — Select a Twilio number with WhatsApp enabled
+- **Agent** — Choose which agent should handle messages
+
+Numbers already assigned to other WhatsApp agents are disabled.
+
+## Step 4: Configure Auto Follow-Up (Optional)
+
+Set up follow-up messages within WhatsApp's 24-hour window:
+
+1. Toggle **"Enable Auto Follow-Up"**
+2. Set follow-up delays:
+   - After 2 hours
+   - After 6 hours
+   - After 12 hours
+   - (Or your preferred intervals)
+
+<Warning>
+  **Critical:** All follow-ups must occur within 24 hours of the customer's last
+  message. After 24 hours, you must use an approved template to re-initiate
+  contact. Unibound enforces this automatically.
+</Warning>
+
+## Step 5: Configure Webhook
+
+After saving, Unibound attempts automatic webhook configuration:
+
+**If automatic succeeds:**
+
+- Your channel is ready to use
+- WhatsApp messages now route to your agent
+
+**If manual setup is required:**
+
+1. You'll see your webhook URL displayed
+2. Log into your Twilio account
+3. Go to Messaging → WhatsApp → Sandbox Settings (or production settings)
+4. Find the Webhook field
+5. Paste your Unibound webhook URL
+6. Save and test in Twilio
+
+## Step 6: Activate the Channel
+
+1. Review all settings
+2. Toggle the channel to **Live**
+3. WhatsApp messages to your number now reach your agent
+
+## Understanding WhatsApp's 24-Hour Window
+
+WhatsApp enforces strict rules on when you can message:
+
+**The 24-Hour Window:**
+
+- Starts when customer sends a message to you
+- Your agent can freely respond for 24 hours
+- After 24 hours, standard messaging is blocked
+
+**Re-engaging After 24 Hours:**
+
+To message after the window expires, you must use an **approved template:**
+
+1. Create a WhatsApp template in Meta Business Manager
+2. Get it approved by Meta (usually 24-48 hours)
+3. Add the template to your Unibound [Outreach Sequence](/tutorials/outreach-sequence) as a WhatsApp step
+4. The template message resets the 24-hour window
+
+<Info>
+  **Approved templates** are required for marketing, notifications, and other
+  non-conversation messages. Use them to re-engage leads who haven't messaged in
+  over 24 hours.
+</Info>
+
+## Auto Follow-Up Strategy
+
+**Smart follow-up timing:**
+
+- **2 hours** — Quick check-in or reminder
+- **6 hours** — Offer additional value or answer follow-up questions
+- **12 hours** — Final offer or call-to-action before 24-hour window closes
+
+Example: Lead reaches out at 9 AM
+
+- 11 AM → First follow-up reminder
+- 3 PM → Second offering additional info
+- 9 PM → Final CTA (just in time before 24-hour window)
+
+## WhatsApp Conversation Flow
+
+When someone messages your WhatsApp number:
+
+1. Your agent receives the message
+2. Agent reads full conversation history
+3. Agent composes a reply based on knowledge base
+4. Conversation continues naturally
+5. Agent can:
+   - Qualify the lead
+   - Provide information
+   - Schedule meetings
+   - Use media (images, PDFs)
+6. All within the 24-hour window
+7. Auto follow-ups trigger if configured
+
+## Testing Your Setup
+
+1. Add your WhatsApp number to a personal contact
+2. Send a test message
+3. Verify your agent responds appropriately
+4. Test a full conversation flow
+5. Test auto follow-ups if enabled
+6. Review conversation in dashboard
+
+## Advanced Features
+
+**WhatsApp Media:**
+
+- Your agent can share images, documents, and media
+- Customers can reply with media
+- All stored and accessible in conversation history
+
+**List and Button Messages (Future):**
+
+- Coming soon: Interactive messages with quick-reply buttons
+- Will improve conversion rates and engagement
+
+**Business Verification:**
+
+- Increases message reliability
+- Required for high volume use cases
+- Apply through Meta Business Manager
+
+## Common Questions
+
+**Why is my message blocked after 24 hours?**
+
+- WhatsApp enforces the 24-hour window for customer protection
+- Use approved templates to re-initiate after expiry
+
+**How do I create an approved template?**
+
+- Log into Meta Business Manager
+- Go to WhatsApp Business → Message Templates
+- Create and submit for approval
+
+**Can I use any message as a template?**
+
+- No, templates must be pre-approved by Meta
+- Keep them professional and relevant
+- Include clear CTAs and value propositions
+
+**What if a customer messages multiple times?**
+
+- Each message restarts the 24-hour window
+- Your agent can reply freely within the window
+- Perfect for ongoing conversations
+
+## Troubleshooting
+
+**Messages not arriving:**
+
+- Verify channel is **Live**
+- Check webhook is properly configured in Twilio
+- Confirm WhatsApp is enabled on your WABA
+
+**Webhook configuration failing:**
+
+- Use manual configuration instructions
+- Verify URL is copied correctly
+- Test webhook in Twilio dashboard
+
+**Agent not responding:**
+
+- Check agent status and configuration
+- Review knowledge base for relevance
+- Test with simple messages first
+
+<Card
+  title="Need help with WhatsApp?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free call and we'll walk you through WhatsApp configuration.
+</Card>

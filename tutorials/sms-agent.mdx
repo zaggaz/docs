@@ -1,0 +1,207 @@
+---
+title: "Set Up SMS from Scratch"
+description: "Enable your AI agent to receive and respond to SMS text messages automatically."
+---
+
+This tutorial walks you through setting up SMS messaging for your AI agent, from phone number requirements to handling incoming text conversations.
+
+## Video Tutorial
+
+<Info>
+Video tutorial coming soon
+</Info>
+
+## Prerequisites
+
+- A created and activated AI agent (see [Set Up Your First Agent](/tutorials/setup-agent))
+- A phone number with SMS capability (see [Set Up Phone Calls](/tutorials/phone-agent) to get one)
+- For US numbers: A2P (Application-to-Person) 10DLC registration (Twilio requirement)
+
+## What You'll Learn
+
+In this tutorial, you'll:
+
+- Verify SMS capability on your phone number
+- Create an SMS inbound channel
+- Configure auto-followups
+- Activate SMS messaging
+- Test incoming text messages
+- Handle common SMS scenarios
+
+## Before You Start: SMS Requirements
+
+### Check Your Phone Number
+
+1. Go to **Configuration → Phone Numbers**
+2. Verify your number has SMS enabled
+3. If you're using a Twilio number, check your Twilio dashboard
+
+### US Phone Numbers: A2P Registration
+
+<Warning>
+  **US Requirement:** US phone numbers (+1) require A2P 10DLC registration with
+  Twilio before SMS can be sent or received. This is a compliance requirement.
+</Warning>
+
+To check your A2P status:
+
+1. Log into your Twilio account
+2. Navigate to Programmable SMS → Phone Numbers
+3. Verify your number shows "A2P Approved"
+4. If not approved, submit your A2P registration to Twilio
+
+### International Numbers
+
+- **UK numbers** — Usually pre-approved for SMS
+- **Other regions** — Check Twilio documentation for your country
+
+## Step 1: Create an SMS Channel
+
+1. Navigate to **Channels** from sidebar
+2. Click **"New Channel"** → select **SMS**
+
+## Step 2: Configure SMS Settings
+
+Fill in all required fields:
+
+**Basic Setup:**
+
+- **Label** — Descriptive name (e.g., "Inbound SMS", "SMS Support Line")
+- **Phone Number** — Select a number with SMS enabled
+- **Agent** — Choose which agent should handle SMS messages
+
+<Info>
+  Numbers already assigned to other SMS agents are grayed out. Each agent can
+  have one dedicated number.
+</Info>
+
+## Step 3: Configure Auto Follow-Up (Optional)
+
+Add automatic follow-up messages if a lead doesn't respond:
+
+1. Toggle **"Enable Auto Follow-Up"**
+2. Set follow-up intervals:
+   - After 1 hour
+   - After 3 hours
+   - After 1 day
+   - (Add as many as you want)
+
+<Tip>
+  Each delay is relative to the previous message. Use follow-ups to re-engage
+  silent leads within reasonable time windows.
+</Tip>
+
+## Step 4: Webhook Configuration
+
+Unibound automatically configures your Twilio webhook when you save:
+
+- If automatic setup succeeds, you're done
+- If manual setup is needed, you'll see instructions to:
+  - Copy your webhook URL
+  - Add it to your Twilio account
+  - Verify the webhook is active
+
+## Step 5: Activate the Channel
+
+1. Review your configuration
+2. Toggle the channel to **Live**
+3. SMS to your number now routes to your agent
+
+## SMS Conversation Flow
+
+When someone texts your number:
+
+1. Agent receives the message and reads conversation history
+2. Agent composes a context-aware text reply
+3. Conversation continues naturally via SMS
+4. Qualification questions are asked in text format
+5. Agent can offer to book meetings or escalate
+6. Messages stay on one thread for continuity
+7. Auto follow-ups trigger if configured and no reply is received
+
+## Understanding SMS Behavior
+
+**When the agent responds:**
+
+- Reads full conversation history before composing response
+- Keeps messages concise and text-appropriate (no long paragraphs)
+- Maintains conversation context across multiple exchanges
+- Respects the lead's time zone and working hours
+
+**Message limits:**
+
+- No character limit imposed by Unibound
+- SMS industry standard is 160 characters per message
+- Longer messages are split automatically by carriers
+
+**Conversation state:**
+
+- Agent knows if it's first message or ongoing conversation
+- Full history is available to agent for context
+- Agent can reference previous topics naturally
+
+## Testing Your SMS Setup
+
+1. Send a text to your configured number
+2. Verify agent responds with appropriate message
+3. Test qualification flow
+4. Test follow-up messages if enabled
+5. Review conversation in dashboard
+
+## Common SMS Scenarios
+
+**Lead responds after 1 day:**
+
+- Agent remembers full conversation context
+- Can pick up where left off naturally
+- Auto follow-ups stop once lead responds
+
+**Multiple follow-ups:**
+
+- Each is sent only if no response to previous
+- Can be relevant to different aspects of offer
+- Space them out reasonably (3 hours to 1 day)
+
+**Opt-out requests:**
+
+- Train your agent to recognize opt-out requests
+- Configure escalation to human review
+- Never send to opted-out numbers
+
+## Troubleshooting
+
+**No messages arriving:**
+
+- Verify channel is **Live**
+- Check phone number SMS capability
+- Confirm A2P registration (US) is active
+- Wait 30 seconds after activation for webhook to sync
+
+**Incorrect responses:**
+
+- Review your agent's knowledge base for clarity
+- Check that response criteria are configured
+- Test with different message types and questions
+
+**Webhook not syncing:**
+
+- Use manual webhook configuration instructions
+- Verify Twilio webhook URL matches exactly
+- Test webhook with Twilio's webhook debugger
+
+## Advanced Setup
+
+Once comfortable with basic SMS:
+
+- **Outbound SMS** — Add SMS steps to [outreach sequences](/tutorials/outreach-sequence)
+- **Template variables** — Use custom properties like `{firstName}` in templates
+- **CRM integration** — Connect HubSpot or Salesforce to log SMS conversations
+- **Notifications** — Get alerts for qualified leads or escalations
+
+<Card
+  title="Need help?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free support call for SMS setup assistance.
+</Card>

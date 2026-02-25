@@ -1,0 +1,166 @@
+---
+title: "Set Up Phone Calls from Scratch"
+description: "Learn how to enable your AI agent to handle phone calls—inbound and outbound."
+---
+
+This tutorial walks you through setting up phone calling capabilities for your AI agent, from obtaining a phone number to activating inbound calls.
+
+## Video Tutorial
+
+<Info>
+Video tutorial coming soon
+</Info>
+
+## Prerequisites
+
+- A created and activated AI agent (see [Set Up Your First Agent](/tutorials/setup-agent))
+- Available credits for phone number purchase or existing Twilio account
+
+## What You'll Learn
+
+In this tutorial, you'll:
+
+- Purchase or import a phone number
+- Create an inbound call channel
+- Configure call behavior and greeting
+- Activate calls for your agent
+- Test incoming calls
+- Understand call recording and compliance
+
+## Step 1: Get a Phone Number
+
+### Option A: Purchase Through Unibound
+
+1. Navigate to **Configuration → Phone Numbers**
+2. Click **"Get a Phone Number"**
+3. Select your preferences:
+   - Region (US or UK)
+   - Number type (Local or Toll Free for US)
+   - Area code (optional)
+   - Specific digits (optional)
+4. Choose an available number and complete purchase
+5. Your number is immediately ready to use
+
+### Option B: Bring Your Own Number
+
+If you already have a Twilio account:
+
+1. Go to **Configuration → Phone Numbers**
+2. Click **"Bring Your Own"**
+3. Enter your Twilio credentials:
+   - Twilio Account SID
+   - Auth Token
+   - Phone number (E.164 format, e.g., +14155551234)
+4. Verify the number has SMS capability
+5. Number is imported and ready to use
+
+<Info>
+  **Organization limits:** Each organization can have one phone number. Admins
+  can have unlimited numbers on their accounts.
+</Info>
+
+## Step 2: Create an Inbound Call Channel
+
+1. Navigate to **Channels** from the sidebar
+2. Click **"New Channel"** → select **Calls**
+
+## Step 3: Configure Call Channel
+
+Fill in all required fields:
+
+**Basic Setup:**
+
+- **Label** — Descriptive name for this channel (e.g., "Inbound Sales Calls", "Customer Support Line")
+- **Phone Number** — Select the number you just purchased or imported
+- **Agent** — Choose which agent should answer calls
+
+**Call Greeting:**
+
+- **Opening Line** — What the agent says when answering (e.g., "Hi, thanks for calling! How can I help you today?")
+
+<Warning>
+  Keep your opening line concise (under 15 seconds). Callers expect a response
+  within 2-3 seconds. Long greetings increase hang-up rates.
+</Warning>
+
+## Step 4: Activate the Channel
+
+1. Review all settings
+2. Toggle the channel to **Live**
+3. Calls to your number now route to your AI agent
+
+## Understanding Call Flow
+
+When a call comes in:
+
+1. Agent answers with your configured opening line
+2. Conversation flows naturally based on agent's knowledge and tone
+3. Qualification questions are woven into discussion
+4. If qualification is positive, agent offers to:
+   - Book a meeting (if configured)
+   - Transfer to a human agent
+   - Schedule a follow-up
+5. Call ends and is logged automatically
+6. Webhook events fire (if configured for CRM integration)
+
+## Call Recording & Compliance
+
+All calls are:
+
+- **Recorded automatically** — Available for quality review
+- **Transcribed** — Full transcripts stored for reference
+- **Compliant** — Follows standard call recording practices
+
+Access recordings and transcripts in the conversation history.
+
+## Handling Common Issues
+
+**Calls aren't routing:**
+
+- Verify the channel is set to **Live**
+- Check that your phone number is properly configured
+- Ensure the agent is active and has no errors
+
+**Agent isn't speaking clearly:**
+
+- Review the agent's Voice and Tone settings
+- Ensure your Opening Line is concise
+- Test with a different voice option
+
+**Caller isn't understood:**
+
+- Review your Knowledge Base for clarity
+- Check Qualification Questions are understandable
+- Test with different phrasing
+
+## Outbound Calls
+
+To make outbound calls to leads:
+
+See [Create Outreach Sequences](/tutorials/outreach-sequence) and add a **Call** step.
+
+## Step 5: Test Your Setup
+
+Call your phone number and verify:
+
+- Agent answers with your opening line
+- Conversation is clear and natural
+- Agent understands your responses
+- Call is logged in conversations
+
+## Advanced Configuration
+
+Once comfortable, consider:
+
+- **Multiple agents** — Create different agents for different teams
+- **Outreach sequences** — Add outbound calling capabilities
+- **Integrations** — Connect to HubSpot, Salesforce, or webhooks for CRM logging
+- **Notifications** — Get alerted when calls are qualified or escalated
+
+<Card
+  title="Need help?"
+  icon="calendar"
+  href="https://meetings.hubspot.com/james2781/support-call"
+>
+  Book a free support call and we'll troubleshoot any issues.
+</Card>
