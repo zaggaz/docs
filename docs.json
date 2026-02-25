@@ -100,13 +100,19 @@
           {
             "group": "Admin",
             "pages": ["admin/roles"]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
           {
-            "group": "API Reference",
+            "group": "Webhooks",
             "pages": [
               "api-reference/webhook-trigger",
               "api-reference/webhook-events",
-              "api-reference/testing-webhooks"
+              "api-reference/testing-webhooks",
+              "configuration/integrations"
             ]
           }
         ]
